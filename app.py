@@ -1,19 +1,24 @@
 from flask import Flask, jsonify
-from datetime import datetime, timedelta
+from datetime import datetime
 import random
 
-app = Flask(_name_)
+app = Flask(__name__)
 
-# Function to generate timestamps at 30-minute intervals# Sample data for beach locations
+# Function to generate timestamps at 30-minute intervals
+def generate_timestamps(num_entries):
+    current_time = datetime.now()
+    return [(current_time - timedelta(minutes=30 * i)).isoformat() for i in range(num_entries)]
+
+# Sample data for beach locations
 beach_data = {
     "beach1": {
         "location": "Beach 1",
         "data": {
-            "timestamp": datetime.now().isoformat(),
-            "temperature": [random.uniform(20.0, 30.0),
-            "currentspeed": [random.uniform(0.5, 3.0),
-            "ph": [round(random.uniform(6.5, 7.5), 2),
-            "tidelength": [random.uniform(1.0, 2.0) 
+            "timestamp": generate_timestamps(5),  # Generate 5 timestamps
+            "temperature": [random.uniform(20.0, 30.0) for _ in range(5)],
+            "currentspeed": [random.uniform(0.5, 3.0) for _ in range(5)],
+            "ph": [round(random.uniform(6.5, 7.5), 2) for _ in range(5)],
+            "tidelength": [random.uniform(1.0, 2.0) for _ in range(5)]
         }
     },
     # Add more beaches as needed
@@ -26,5 +31,5 @@ def get_beach_data(beach_id):
     else:
         return jsonify({"error": "Beach not found"}), 404
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True)
