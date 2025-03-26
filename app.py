@@ -10,10 +10,10 @@ beach_data = {
         "location": "Beach 1",
         "data": {
             "timestamp": datetime.now().isoformat(),
-            "temperature": [random.uniform(20.0, 30.0),
-            "currentspeed": [random.uniform(0.5, 3.0),
-            "ph": [round(random.uniform(6.5, 7.5), 2),
-            "tidelength": [random.uniform(1.0, 2.0) 
+            "temperature": random.uniform(20.0, 30.0),
+            "currentspeed": random.uniform(0.5, 3.0),
+            "ph": round(random.uniform(6.5, 7.5), 2),
+            "tidelength": random.uniform(1.0, 2.0) 
         }
     },
     # Add more beaches as needed
