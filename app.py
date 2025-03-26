@@ -2,7 +2,7 @@ from flask import Flask, jsonify
 from datetime import datetime, timedelta
 import random
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Function to generate timestamps at 30-minute intervals# Sample data for beach locations
 beach_data = {
@@ -26,5 +26,5 @@ def get_beach_data(beach_id):
     else:
         return jsonify({"error": "Beach not found"}), 404
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True)
